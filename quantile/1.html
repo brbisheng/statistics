@@ -230,8 +230,12 @@ Median regression                                   Number of obs =        200
      <br>
 
      <p><span>&#8594;</span>If we include the continuous explanatory variable <b>socst</b>, the constant is the the predicted value when <b>socst == 0</b>. The quantile regression coefficient tells us that for every one-unit increase in <b>socst</b>, the predicted value of the response variable <b>write</b> will increase by .65.</p>
-     <p><span>&#8594;</span>We can verify the coefficient by listing the predictor with the associated predicted values for any two adjacent values. For example, for the one-unit change from 42 to 43 in <b>socst</b> the predicted value increases by .65. for the 
-          -th quantile</p>
+     <p><span>&#8594;</span>We can verify the coefficient by listing the predictor with the associated predicted values for any two adjacent values. 
+          <ol>
+               <li>For example, for the one-unit change from 42 to 43 in <b>socst</b> the predicted value increases by .65. for the 25-th quantile.</li>
+               <li>For example, for the one-unit change from 42 to 43 in <b>socst</b> the predicted value increases by .6333. for the 50-th quantile.</li>
+          </ol>
+     </p>
 
  <blockquote>
 <pre><b>sort socst
