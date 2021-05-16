@@ -1,65 +1,90 @@
-<div class="entry-content" itemprop="text"><p>The short answer is that you interpret quantile regression coefficients just like you do ordinary
-regression coefficients. The long answer is that you interpret quantile regression coefficients
-almost just like ordinary regression coefficients.</p>
-<p>We can illustrate this with a couple of examples using the <b>hsb2</b> dataset.</p>
+<div class="entry-content" itemprop="text">
+     
+<p>We use the <b>hsb2</b> dataset to give some examples</p>
+     
 <blockquote>
 <pre><b>use https://stats.idre.ucla.edu/stat/stata/notes/hsb2, clear
 
-tabstat write, by(female) stat(p25 p50 p75)</b>
+tabstat write, by(female) stat(p10 p25 p50 p75 p90)</b>
 
 Summary for variables: write
      by categories of: female 
 
-female |       p25       p50       p75
--------+------------------------------
-  male |        41        52        59
-female |        50        57        62
--------+------------------------------
- Total |      45.5        54        60
---------------------------------------</pre>
+female |       p10       p25       p50       p75       p90
+-------+--------------------------------------------------
+  male |        37        41        52        59        63
+female |        44        50        57        62        65
+-------+--------------------------------------------------
+ Total |        39      45.5        54        60        65
+----------------------------------------------------------</pre>
 </blockquote>
-<p>We will begin by running median and .75 quantile regression models without any
-predictors.</p>
+     
+<p>Let us start by running 0.25, .50, and .75 quantile regression models without including anypredictors.</p>
+     
 <blockquote>
-<pre><b>qreg write</b>
+<pre><b>qreg write, quantile(.25)</b>
+Iteration  1:  WLS sum of weighted deviations =  755.39801
 
-Iteration  1:  WLS sum of weighted deviations =    1595.95
+Iteration  1: sum of abs. weighted deviations =     767.75
+note:  alternate solutions exist
+Iteration  2: sum of abs. weighted deviations =     666.75
 
-Iteration  1: sum of abs. weighted deviations =       1591
-Iteration  2: sum of abs. weighted deviations =       1571
-
-Median regression                                    Number of obs =       200
-  Raw sum of deviations     1571 (about 54)
-  Min sum of deviations     1571                     Pseudo R2     =    0.0000
+.25 Quantile regression                             Number of obs =        200
+  Raw sum of deviations   666.75 (about 45)
+  Min sum of deviations   666.75                    Pseudo R2     =     0.0000
 
 ------------------------------------------------------------------------------
-       write |      Coef.   Std. Err.      t    P&gt;|t|     [95% Conf. Interval]
+       write |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
 -------------+----------------------------------------------------------------
-       _cons |         54   1.239519    43.57   0.000     51.55572    56.44428
+       _cons |         46   1.197473    38.41   0.000     43.63863    48.36137
+------------------------------------------------------------------------------
+
+<b>qreg write, quantile(.50)</b>
+Iteration  1:  WLS sum of weighted deviations =  794.11248
+
+Iteration  1: sum of abs. weighted deviations =      795.5
+note:  alternate solutions exist
+Iteration  2: sum of abs. weighted deviations =      785.5
+
+Median regression                                   Number of obs =        200
+  Raw sum of deviations    785.5 (about 54)
+  Min sum of deviations    785.5                    Pseudo R2     =     0.0000
+
+------------------------------------------------------------------------------
+       write |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+       _cons |         54   1.064059    50.75   0.000     51.90172    56.09828
 ------------------------------------------------------------------------------
 
 <b>qreg write, quantile(.75)</b>
+Iteration  1:  WLS sum of weighted deviations =  690.18668
 
-Iteration  1:  WLS sum of weighted deviations =  1237.9502
+Iteration  1: sum of abs. weighted deviations =     681.25
+note:  alternate solutions exist
+Iteration  2: sum of abs. weighted deviations =     542.25
 
-Iteration  1: sum of abs. weighted deviations =     1202.5
-Iteration  2: sum of abs. weighted deviations =     1084.5
-
-75 Quantile regression                              Number of obs =       200
-  Raw sum of deviations   1084.5 (about 60)
-  Min sum of deviations   1084.5                     Pseudo R2     =    0.0000
+.75 Quantile regression                             Number of obs =        200
+  Raw sum of deviations   542.25 (about 60)
+  Min sum of deviations   542.25                    Pseudo R2     =     0.0000
 
 ------------------------------------------------------------------------------
-       write |      Coef.   Std. Err.      t    P&gt;|t|     [95% Conf. Interval]
+       write |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
 -------------+----------------------------------------------------------------
-       _cons |         60   .6665574    90.01   0.000     58.68558    61.31442
+       _cons |         60   .5322104   112.74   0.000      58.9505     61.0495
 ------------------------------------------------------------------------------</pre>
+
 </blockquote>
-<p>In the median regression the constant is the median of the sample while in the .75 quantile
-regression the constant is the 75th percentile for the sample.</p>
-<p>Next, we’ll add the binary predictor <b>female</b> to the model.</p>
+     <p>
+          <ol>
+               <li> In the .25 quantile regression, the constant is the 25% quantile of the response variable for the whole sample. </li>
+               <li> In the .50 quantile regression, the constant is the median of the response variable for the whole sample. </li>
+               <li> In the .75 quantile regression, the constant is the 75% quantile of the response variable for the whole sample. </li> 
+     </p>
+
+     <p>In the next step, we add an indicator variable <b>female</b> to the model.</p>
+
 <blockquote>
-<pre><b>qreg write female</b>
+<pre><b>qreg write female, quantile(0.25)</b>
 
 Iteration  1:  WLS sum of weighted deviations =  1543.9433
 
