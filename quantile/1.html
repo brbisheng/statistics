@@ -25,7 +25,7 @@ female |        44        50        57        62        65
 ----------------------------------------------------------</pre>
 </blockquote>
      
-<p> <span>&#8594;</span> Let us start by running 0.25, .50, and .75 quantile regression models without including anypredictors.</p>
+<p> <span>&#8594;</span> Let us start by running 0.25-th, .50-th, and .75-th quantile regression models without including any predictors.</p>
      
 <blockquote>
 <pre><b>qreg write, quantile(.25)</b>
@@ -87,9 +87,9 @@ Iteration  2: sum of abs. weighted deviations =     542.25
 </blockquote>
      <p> <span>&#8594;</span>
           <ol>
-               <li> In the .25 quantile regression, the constant is the 25% quantile of the response variable for the whole sample. </li>
-               <li> In the .50 quantile regression, the constant is the median of the response variable for the whole sample. </li>
-               <li> In the .75 quantile regression, the constant is the 75% quantile of the response variable for the whole sample. </li> 
+               <li> In the .25-th quantile regression, the constant is the 25%-th quantile of the response variable for the whole sample. </li>
+               <li> In the .50-th quantile regression, the constant is the median of the response variable for the whole sample. </li>
+               <li> In the .75-th quantile regression, the constant is the 75%-th quantile of the response variable for the whole sample. </li> 
      </p>
 
      <p>In the next step, we add an indicator variable <b>female</b> to the model.</p>
@@ -229,8 +229,9 @@ Median regression                                   Number of obs =        200
      
      <br>
 
-     <p>If we include the continuous explanatory variable <b>socst</b>, the constant is the the predicted value when <b>socst == 0</b>. The quantile regression coefficient tells us that for every one-unit increase in <b>socst</b>, the predicted value of the response variable <b>write</b> will increase by .65.</p>
-     <p>We can show this by listing the predictor with the associated predicted values for two adjacent values. Notice that for the one unit change from 41 to 42 in <b>socst</b> the predicted value increases by .65.</p>
+     <p><span>&#8594;</span>If we include the continuous explanatory variable <b>socst</b>, the constant is the the predicted value when <b>socst == 0</b>. The quantile regression coefficient tells us that for every one-unit increase in <b>socst</b>, the predicted value of the response variable <b>write</b> will increase by .65.</p>
+     <p><span>&#8594;</span>We can verify the coefficient by listing the predictor with the associated predicted values for any two adjacent values. For example, for the one-unit change from 42 to 43 in <b>socst</b> the predicted value increases by .65. for the 
+          -th quantile</p>
 
  <blockquote>
 <pre><b>sort socst
