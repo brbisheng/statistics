@@ -1,0 +1,133 @@
+
+<body>
+<div id="kms-document-div"><h1>Test the normality of a variable in Stata</h1>
+
+<p>In <a class="kbh" href="afly" title="">Stata</a>, you can test normality by either graphical or numerical methods. The former include drawing a stem-and-leaf plot, scatterplot, box-plot, histogram, probability-probability (P-P) plot, and quantile-quantile (Q-Q) plot. The latter involve computing the Shapiro-Wilk, Shapiro-Francia, and Skewness/Kurtosis tests.</p>
+
+<p>The examples below are for the variable <code>score</code>:</p>
+<div class="table-responsive"><table class="table-bordered table" title="Graphical methods">
+
+
+
+
+
+
+
+
+
+<thead><tr>
+<th colspan="2" style="background-color:#f1f1f1">Graphical methods </th>
+</tr></thead><tbody><tr>
+<td><strong>Command</strong></td>
+<td><strong>Plot drawn</strong></td>
+</tr><tr>
+<td><code>. stem score</code> </td>
+<td>stem-and-leaf</td>
+</tr><tr>
+<td><code>. dotplot score</code> </td>
+<td>scatterplot</td>
+</tr><tr>
+<td><code>. graph box score</code> </td>
+<td>box-plot</td>
+</tr><tr>
+<td><code>. histogram score</code> </td>
+<td>histogram</td>
+</tr><tr>
+<td><code>. pnorm score</code> </td>
+<td>P-P plot</td>
+</tr><tr>
+<td><code>. qnorm score</code> </td>
+<td>Q-Q plot </td>
+</tr></tbody></table></div><div class="visible-print"><table class="table-bordered table" title="Graphical methods">
+
+
+
+
+
+
+
+
+
+<thead><tr>
+<th colspan="2" style="background-color:#f1f1f1">Graphical methods </th>
+</tr></thead><tbody><tr>
+<td><strong>Command</strong></td>
+<td><strong>Plot drawn</strong></td>
+</tr><tr>
+<td><code>. stem score</code> </td>
+<td>stem-and-leaf</td>
+</tr><tr>
+<td><code>. dotplot score</code> </td>
+<td>scatterplot</td>
+</tr><tr>
+<td><code>. graph box score</code> </td>
+<td>box-plot</td>
+</tr><tr>
+<td><code>. histogram score</code> </td>
+<td>histogram</td>
+</tr><tr>
+<td><code>. pnorm score</code> </td>
+<td>P-P plot</td>
+</tr><tr>
+<td><code>. qnorm score</code> </td>
+<td>Q-Q plot </td>
+</tr></tbody></table></div>
+
+<div class="table-responsive"><table class="table-bordered table" title="Numerical methods">
+
+
+
+
+
+<thead><tr>
+<th colspan="2" style="background-color:#f1f1f1">Numerical methods </th>
+</tr></thead><tbody><tr>
+<td><strong>Command</strong></td>
+<td><strong>Test conducted</strong></td>
+</tr><tr>
+<td><code>. swilk score</code> </td>
+<td>Shapiro-Wilk</td>
+</tr><tr>
+<td><code>. sfrancia score</code> </td>
+<td>Shapiro-Francia </td>
+</tr><tr>
+<td><code>. sktest score</code> </td>
+<td>Skewness/Kurtosis</td>
+</tr></tbody></table></div><div class="visible-print"><table class="table-bordered table" title="Numerical methods">
+
+
+
+
+
+<thead><tr>
+<th colspan="2" style="background-color:#f1f1f1">Numerical methods </th>
+</tr></thead><tbody><tr>
+<td><strong>Command</strong></td>
+<td><strong>Test conducted</strong></td>
+</tr><tr>
+<td><code>. swilk score</code> </td>
+<td>Shapiro-Wilk</td>
+</tr><tr>
+<td><code>. sfrancia score</code> </td>
+<td>Shapiro-Francia </td>
+</tr><tr>
+<td><code>. sktest score</code> </td>
+<td>Skewness/Kurtosis</td>
+</tr></tbody></table></div>
+
+<p>Be aware that in these tests, the null hypothesis states that the variable is normally distributed.</p>
+
+
+<div>
+
+<p>If you have questions about using statistical and mathematical software at Indiana University, <a class="new-window" href="https://mailform.kb.iu.edu/email.php?cid=1449" title="">contact the UITS Research Applications and Deep Learning team&nbsp;<span class="glyphicon glyphicon-new-window"></span></a>.</p>
+
+<!-- <div><kb:boiler src="holiday-hours"/></div> 
+
+Removed hours for FP 19958, so I don't think the holiday-hours boiler is needed any longer. Only commenting out for now, because the hours may get added back in. =padbrown 2/5/19 -->
+</div>
+<div class="references panel panel-primary"><div class="panel-heading"><h2 class="panel-title">Related documents</h2></div>
+<div class="list-group"><a class="list-group-item" href="atuo">Store the descriptive statistics of a variable in a macro in Stata</a>
+</div></div>
+</div>
+</body>
