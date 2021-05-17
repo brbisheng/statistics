@@ -1,0 +1,111 @@
+Log Files, Getting Data in STATA
+Log files save your commands
+cd /home/students/rycoley/bios514-517
+• To change directory
+log using stata-section-oct7, replace text
+• To name log file (change stata-section-oct7)
+• capture log close to close log file
+insheet using
+http://courses.washington.edu/b517/Datasets/FEVdata.csv
+• To get FEV data in
+Defining, Labeling Variables
+table smoke
+• Currently coded as 1 and 2
+• No missing data (would be coded as 9)
+label define smokelabel 1 "smoker" 2 "non-smoker"
+label values smoke smokelabel
+label define sexlabel 1 "male" 2 "female"
+label values sex sexlabel
+Labeling Variables
+label variable age "Age (years)"
+label variable fev "FEV (L/s)"
+label variable height "Height (in)"
+
+Descriptive Statistics
+Basic commands detailed in this week’s lecture notes:
+• summarize
+• means
+• centile
+• tabstat
+• tabulate
+
+Descriptive Stats by Group
+bysort sex: tabstat fev, stat(n mean sd min p25
+med p75 max) col(stat) format
+bysort sex: tabulate smoke
+
+Defining New Variables
+A few ways:
+• gen age9over = age>=9
+• gen age9over = 0
+replace age9over=1 if age>=9
+• gen age9over = age==9 | age==10 | age==11...
+|age==19
+
+Measures of Spread
+• Range: tabstat fev, stat(min max range)
+• Variance: tabstat fev, stat(var)
+• Standard Deviation: tabstat fev, stat(sd)
+• Interquartile Range: tabstat fev, stat(p25, p75,
+iqr)
+• IQR is the distance between the 25th and 75th
+percentiles of the data
+
+Visualizing Data- Histograms
+histogram fev
+to save: graph export hist-fev.png, replace
+Height of each bar proportional to proportion of observations
+in that bin’s range
+
+Visualizing Data- Histograms
+histogram fev, kdensity by (sex)
+kdensity adds smooth line estimating density
+
+Visualizing Data- Dotplots
+dotplot fev
+Each dot represents an observations
+
+Visualizing Data- Box Plots
+• a.k.a. “Box and whiskers” plots
+• Box extends from lower quartile (25th percentile of data) to
+upper quartile (75th percentile) with a line at the median
+(50th percentile).
+• Whiskers extend from lower quartile to “lower adjacent value”
+and from upper quartile to “upper adjacent value”
+LAV = lower quartile −
+3
+2
+IQR UAV = upper quartile +
+3
+2
+IQR (1)
+• Observations outside the UAV and LAV plotted as points
+• (Some box plots have whiskers extend to minimum and
+maximum observations.)
+
+Visualizing Data- Box Plots
+graph box fev
+
+Visualizing Data- Box Plots
+graph box fev, over(sex)
+
+Visualizing Data- Scatterplots
+scatter fev height
+
+Visualizing Data- Bar Charts
+gen one=1
+graph bar (count) one, over(smoke) ytitle("frequency")
+
+
+Visualizing Data- Bar Chart
+gen dthou=deaths/1000
+graph hbar dthou, over(cause) ytitle("Annual
+deaths (thousands)")
+
+Visualizing Data- Bar Charts
+gen dthou=deaths/1000
+graph hbar dthou, over(cause, sort(1) descending)
+ytitle("Annual deaths (thousands)")
+
+Visualizing Data- Pie Charts
+graph pie deaths, over(cause) sort descending
