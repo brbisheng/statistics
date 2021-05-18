@@ -12,7 +12,7 @@
 <div class = "center"><h1>Test the normality of a variable in Stata</h1>
 
 <p>In Stata, we can test normality of a distribution by either graphical or numerical methods.</p>
-     <div style = "width: auto; margin: auto;">
+     <div style = "display: flex; justify-content: center;">
      <table style="height: 144px; width: 80%; border-collapse: collapse; border-style: hidden;" border="1">
 <tbody>
 <tr style="height: 18px;">
@@ -54,10 +54,32 @@
 </table>
           </div>
     
-     <hr>
+     <br>
      
      <div>
-          
+          <table style="width: 80%; border-collapse: collapse; border-style: hidden; height: 90px;" border="1">
+<tbody>
+<tr style="height: 18px;">
+<td style="width: 50%; height: 18px;" colspan="2"><strong>Numerical methods</strong></td>
+</tr>
+<tr style="height: 18px;">
+<td style="width: 50%; height: 18px;"><strong>Command</strong></td>
+<td style="width: 50%; height: 18px;">Test</td>
+</tr>
+<tr style="height: 18px;">
+<td style="width: 50%; height: 18px;"><span style="color: #ff0000;"><strong>swilk var</strong></span></td>
+<td style="width: 50%; height: 18px;">Shapiro-Wilk</td>
+</tr>
+<tr style="height: 18px;">
+<td style="width: 50%; height: 18px;"><span style="color: #ff0000;"><strong>sfrancia var</strong></span></td>
+<td style="width: 50%; height: 18px;">Shapiro-Francia</td>
+</tr>
+<tr style="height: 18px;">
+<td style="width: 50%; height: 18px;"><span style="color: #ff0000;"><strong>sktest var</strong></span></td>
+<td style="width: 50%; height: 18px;">Skewness/Kurtosis</td>
+</tr>
+</tbody>
+</table>
      </div>
      
      <p>Be aware that in these tests, the null hypothesis states that the variable is normally distributed.</p>
