@@ -12,129 +12,43 @@
 <div class = "center"><h1>Test the normality of a variable in Stata</h1>
 
 <p>In Stata, we can test normality of a distribution by either graphical or numerical methods.</p>
-<ol>
-<li>Graphical methods include drawing a
-<ol>
-<li>stem-and-leaf plot,</li>
-<li>scatterplot,</li>
-<li>box-plot,</li>
-<li>histogram,</li>
-<li>probability-probability (P-P) plot,</li>
-<li>or quantile-quantile (Q-Q) plot.</li>
-</ol>
-</li>
-<li>Numerical methods involve computing the
-<ol>
-<li>Shapiro-Wilk test,</li>
-<li>Shapiro-Francia test,</li>
-<li>and Skewness/Kurtosis tests.</li>
-</ol>
-</li>
-</ol>
+     <div style = "width: auto; margin: auto;">
+     <table style="height: 144px; width: 50%; border-collapse: collapse; border-style: hidden;" border="1">
+<tbody>
+<tr style="height: 18px;">
+<td style="width: 50%; height: 18px; text-align: center;" colspan="2">Graphical methods</td>
+</tr>
+<tr style="height: 18px;">
+<td style="width: 50%; height: 18px;">Command</td>
+<td style="width: 50%; height: 18px;">Plot type</td>
+</tr>
+<tr style="height: 18px;">
+<td style="width: 50%; height: 18px;"><span style="color: #ff0000;"><strong>stem var</strong></span></td>
+<td style="width: 50%; height: 18px;">stem-and-leaf</td>
+</tr>
+<tr style="height: 18px;">
+<td style="width: 50%; height: 18px;"><span style="color: #ff0000;"><strong>dotplot var</strong></span></td>
+<td style="width: 50%; height: 18px;">scatterplot</td>
+</tr>
+<tr style="height: 18px;">
+<td style="width: 50%; height: 18px;"><span style="color: #ff0000;"><strong>graph box var</strong></span></td>
+<td style="width: 50%; height: 18px;">box plot</td>
+</tr>
+<tr style="height: 18px;">
+<td style="width: 50%; height: 18px;"><span style="color: #ff0000;"><strong>histogram var</strong></span></td>
+<td style="width: 50%; height: 18px;">histogram</td>
+</tr>
+<tr style="height: 18px;">
+<td style="width: 50%; height: 18px;"><span style="color: #ff0000;"><strong>pnorm var</strong></span></td>
+<td style="width: 50%; height: 18px;">p-p plot</td>
+</tr>
+<tr style="height: 18px;">
+<td style="width: 50%; height: 18px;"><span style="color: #ff0000;"><strong>qnorm var</strong></span></td>
+<td style="width: 50%; height: 18px;">q-q plot</td>
+</tr>
+</tbody>
+</table>
+          </div>
 <p>Be aware that in these tests, the null hypothesis states that the variable is normally distributed.</p>
-  
-<p>The examples below are for the variable <code>score</code>:</p>
-
-  <thead><tr>
-<th colspan="2" style="background-color:#f1f1f1">Graphical methods </th>
-</tr></thead><tbody><tr>
-<td><strong>Command</strong></td>
-<td><strong>Plot drawn</strong></td>
-</tr><tr>
-<td><code>. stem score</code> </td>
-<td>stem-and-leaf</td>
-</tr><tr>
-<td><code>. dotplot score</code> </td>
-<td>scatterplot</td>
-</tr><tr>
-<td><code>. graph box score</code> </td>
-<td>box-plot</td>
-</tr><tr>
-<td><code>. histogram score</code> </td>
-<td>histogram</td>
-</tr><tr>
-<td><code>. pnorm score</code> </td>
-<td>P-P plot</td>
-</tr><tr>
-<td><code>. qnorm score</code> </td>
-<td>Q-Q plot </td>
-</tr></tbody></table></div><div class="visible-print"><table class="table-bordered table" title="Graphical methods">
-
-
-
-
-
-
-
-
-
-<thead><tr>
-<th colspan="2" style="background-color:#f1f1f1">Graphical methods </th>
-</tr></thead><tbody><tr>
-<td><strong>Command</strong></td>
-<td><strong>Plot drawn</strong></td>
-</tr><tr>
-<td><code>. stem score</code> </td>
-<td>stem-and-leaf</td>
-</tr><tr>
-<td><code>. dotplot score</code> </td>
-<td>scatterplot</td>
-</tr><tr>
-<td><code>. graph box score</code> </td>
-<td>box-plot</td>
-</tr><tr>
-<td><code>. histogram score</code> </td>
-<td>histogram</td>
-</tr><tr>
-<td><code>. pnorm score</code> </td>
-<td>P-P plot</td>
-</tr><tr>
-<td><code>. qnorm score</code> </td>
-<td>Q-Q plot </td>
-</tr></tbody></table></div>
-
-<div class="table-responsive"><table class="table-bordered table" title="Numerical methods">
-
-
-
-
-
-<thead><tr>
-<th colspan="2" style="background-color:#f1f1f1">Numerical methods </th>
-</tr></thead><tbody><tr>
-<td><strong>Command</strong></td>
-<td><strong>Test conducted</strong></td>
-</tr><tr>
-<td><code>. swilk score</code> </td>
-<td>Shapiro-Wilk</td>
-</tr><tr>
-<td><code>. sfrancia score</code> </td>
-<td>Shapiro-Francia </td>
-</tr><tr>
-<td><code>. sktest score</code> </td>
-<td>Skewness/Kurtosis</td>
-</tr></tbody></table></div><div class="visible-print"><table class="table-bordered table" title="Numerical methods">
-
-
-
-
-
-<thead><tr>
-<th colspan="2" style="background-color:#f1f1f1">Numerical methods </th>
-</tr></thead><tbody><tr>
-<td><strong>Command</strong></td>
-<td><strong>Test conducted</strong></td>
-</tr><tr>
-<td><code>. swilk score</code> </td>
-<td>Shapiro-Wilk</td>
-</tr><tr>
-<td><code>. sfrancia score</code> </td>
-<td>Shapiro-Francia </td>
-</tr><tr>
-<td><code>. sktest score</code> </td>
-<td>Skewness/Kurtosis</td>
-</tr></tbody></table></div>
-
-
 
 </body>
